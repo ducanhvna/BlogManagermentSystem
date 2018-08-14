@@ -27,5 +27,21 @@ namespace BlogManagermentService
         OverviewInfo GetCategorybyIndex(int index);
 
         #endregion
+
+        #region Blog Group Area
+        [OperationContract]
+        CreateObjectInfo CreateNewBlogGroup(short categoryId);
+
+        [OperationContract]
+        int NumberBlogGroups();
+
+        [OperationContract]
+        int NumberBlogGroup(short categoryId);
+
+        [OperationContract]
+        OverviewInfo GetBlogGroupByIndex(short categoryId);
+
+        #endregion
+
     }
 }

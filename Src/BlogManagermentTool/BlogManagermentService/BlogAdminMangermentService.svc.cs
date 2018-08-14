@@ -85,6 +85,44 @@ namespace BlogManagermentService
             ListCategories = model.ListCategories;
             return ListCategories.Count;
         }
+        #endregion
+
+        #region Blog Group Area
+        /// <summary>
+        /// Create new Group service
+        /// </summary>
+        /// <param name="categoryId"></param>
+        /// <returns></returns>
+        public CreateObjectInfo CreateNewBlogGroup(short categoryId)
+        {
+            var categoryObject = ListCategories.Where(i => i._id.Pid == categoryId).FirstOrDefault();
+            if(categoryObject != null)
+            {
+                short errorCode = 0;
+                var objectId = model.CreateNewBlogGroup(categoryObject._id, ref errorCode);
+                return new CreateObjectInfo
+                {
+                    ObjectId = objectId,
+                    ErrorCode = errorCode
+                };
+            }
+            return null;
+        }
+
+        public int NumberBlogGroups()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int NumberBlogGroup(short categoryId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public OverviewInfo GetBlogGroupByIndex(short categoryId)
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
     }
