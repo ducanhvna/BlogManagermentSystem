@@ -39,6 +39,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -69,6 +71,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BlogCategory.cs" />
+    <Compile Include="Connected Services\BlogManagermentServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Global.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -101,6 +109,22 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\BlogManagermentServiceReference\BlogAdminMangermentService.wsdl" />
+    <None Include="Connected Services\BlogManagermentServiceReference\BlogAdminMangermentService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BlogManagermentServiceReference\BlogAdminMangermentService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BlogManagermentServiceReference\BlogAdminMangermentService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BlogManagermentServiceReference\BlogManagermentTool.BlogManagermentServiceReference.CreateObjectInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\BlogManagermentServiceReference\BlogManagermentTool.BlogManagermentServiceReference.OverviewInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -118,6 +142,27 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\Icons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\BlogManagermentServiceReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BlogManagermentServiceReference\BlogAdminMangermentService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BlogManagermentServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BlogManagermentServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\BlogManagermentServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

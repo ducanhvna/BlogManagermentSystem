@@ -7,15 +7,29 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlogManagermentTool.BlogManagermentServiceReference;
 
 namespace BlogManagermentTool
 {
     class MainWindowViewModel: ViewModelBase
     {
         private ObservableCollection<BlogCategory> m_BlogContainers;
+        private BlogAdminMangermentServiceClient m_ModelClient ;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MainWindowViewModel()
         {
+            // Init model
+            Global.ModelClient = new BlogAdminMangermentServiceClient();
+
+            // Init SelectObjectContainerCommand
+            SelectObjectContainerCommand = new RelayCommand(SelectObjectContainer);
+
+            // Init client
+            m_ModelClient = Global.ModelClient;
+
             // Initialize CreateNewBlogCategoryCommand
             CreateNewBlogCategoryCommand = new RelayCommand(CreateNewBlogCategory);
 
@@ -23,24 +37,21 @@ namespace BlogManagermentTool
             InitializeComponents();
         }
 
+        /// <summary>
+        /// Initialize components content
+        /// </summary>
         private void InitializeComponents()
         {
+
             BlogContainers = new ObservableCollection<BlogCategory>();
-            BlogCategory item1 = new BlogCategory()
+            var numberCategory = m_ModelClient.NumberCategories();
+            for (var i = 0; i < numberCategory; i++)
             {
-                Name = "abc",
-            };
-            item1.SubItems = new ObservableCollection<IObjectContainer>();
-
-            BlogCategory item2 = new BlogCategory()
-            {
-                Name = "abc2",
-            };
-            item1.SubItems.Add(item2);
-            BlogContainers.Add(item1);
-            BlogContainers.Add(item2);
-
-
+                BlogContainers.Add(new BlogCategory()
+                {
+                    Name = "Temp"
+                });
+            }
         }
 
         /// <summary>
@@ -61,16 +72,10 @@ namespace BlogManagermentTool
                 }
             }
         }
-        #region CreateNewBlogCategoryCommand
-        public RelayCommand CreateNewBlogCategoryCommand { get; internal set; }
 
-        public IObjectContainer SelectedItem { get; set; }
-
-        /// <summary>
-        /// CreateNewBlogCategory
-        /// </summary>
-        /// <param name="param"></param>
-        private void CreateNewBlogCategory(object param)
+        #region SelectObjectContainer
+        public RelayCommand SelectObjectContainerCommand { get; internal set; }
+        private void SelectObjectContainer(object param)
         {
             var objectselect = param as IObjectContainer;
             foreach (var item in BlogContainers)
@@ -79,8 +84,31 @@ namespace BlogManagermentTool
             }
             objectselect.IsSelected = true;
             SelectedItem = objectselect;
-            RaisePropertyChanged("BlogContainers");
-            RaisePropertyChanged("IsSelected");
+        }
+        #endregion
+
+        #region CreateNewBlogCategoryCommand
+        /// <summary>
+        /// CreateNewBlogCategoryCommand
+        /// </summary>
+        public RelayCommand CreateNewBlogCategoryCommand { get; internal set; }
+
+        /// <summary>
+        /// Selected items
+        /// </summary>
+        public IObjectContainer SelectedItem { get; set; }
+
+        /// <summary>
+        /// CreateNewBlogCategory
+        /// </summary>
+        /// <param name="param"></param>
+        private void CreateNewBlogCategory(object param)
+        {
+            var createResult = m_ModelClient.CreateNewCategory();
+            if (createResult.ErrorCode == 0)
+            {
+                InitializeComponents();
+            }
         }
         #endregion
     }

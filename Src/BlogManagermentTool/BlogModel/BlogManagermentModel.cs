@@ -36,7 +36,7 @@ namespace BlogModel
             GroupCollection = db.GetCollection<BlogGroup>("groups");
             PostCollection = db.GetCollection<BlogPost>("blogposts");
         }
-
+        #endregion
         #region Category Area
         public ObservableCollection<Category> ListCategories { 
             get

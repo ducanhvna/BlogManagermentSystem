@@ -4,12 +4,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogManagermentTool", "BlogManagermentTool\BlogManagermentTool.csproj", "{08AC0002-BA43-4945-A691-4CCEF1476DB0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DBED6F7E-BD27-4DC7-B60B-0AB87CCF1DF7} = {DBED6F7E-BD27-4DC7-B60B-0AB87CCF1DF7}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibCommon", "LibCommon\LibCommon.csproj", "{2FF2A8F5-06C4-431A-A533-9A3525B933E5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogManagermentService", "BlogManagermentService\BlogManagermentService.csproj", "{DBED6F7E-BD27-4DC7-B60B-0AB87CCF1DF7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogModel", "BlogModel\BlogModel.csproj", "{03A4C750-351C-4E19-B2CC-5A1281AA021C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnABlog", "DnABlog\DnABlog.csproj", "{B1BE5022-08BC-41A7-B4FD-F0786F8F84F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +38,10 @@ Global
 		{03A4C750-351C-4E19-B2CC-5A1281AA021C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{03A4C750-351C-4E19-B2CC-5A1281AA021C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{03A4C750-351C-4E19-B2CC-5A1281AA021C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1BE5022-08BC-41A7-B4FD-F0786F8F84F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1BE5022-08BC-41A7-B4FD-F0786F8F84F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1BE5022-08BC-41A7-B4FD-F0786F8F84F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1BE5022-08BC-41A7-B4FD-F0786F8F84F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

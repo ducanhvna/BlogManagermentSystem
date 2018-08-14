@@ -40,7 +40,7 @@
                         <ListViewItem IsSelected="{Binding IsSelected}" >
                             <i:Interaction.Triggers >
                                 <i:EventTrigger EventName="MouseUp">
-                                    <i:InvokeCommandAction CommandParameter="{Binding}" Command="{Binding ElementName=mainTreeView,Path=DataContext.CreateNewBlogCategoryCommand}"/>
+                                    <i:InvokeCommandAction CommandParameter="{Binding}" Command="{Binding ElementName=mainTreeView,Path=DataContext.SelectObjectContainerCommand}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                             <TextBlock Text="{Binding Path=Name}">

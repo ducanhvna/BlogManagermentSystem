@@ -11,7 +11,21 @@ namespace BlogManagermentService
     [ServiceContract]
     public interface IBlogAdminMangermentService
     {
+
         [OperationContract]
         void DoWork();
+
+        #region Categories Area
+
+        [OperationContract]
+        CreateObjectInfo CreateNewCategory();
+
+        [OperationContract]
+        int NumberCategories();
+
+        [OperationContract]
+        OverviewInfo GetCategorybyIndex(int index);
+
+        #endregion
     }
 }
